@@ -1,0 +1,5 @@
+Theme name:    Blue
+Description:   It is a theme ya know.
+Author name:   Wade Hammes
+Author site:  	http://wadehammes.com/
+License:       WTFPL (http://sam.zoy.org/wtfpl/COPYING)

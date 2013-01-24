@@ -1,0 +1,764 @@
+// Style for Personal landing page
+
+//VARIABLES
+$base: 100%;
+
+//colors
+$background: #FFF;
+$dark: #292929;
+$blue: #238dbe;
+$darkblue: #084D4F;
+$gray: #888;
+$greenl: #A8DBA8;
+$black: #2A2829;
+$white: #FFF;
+$orange: #5B0800;
+
+$green: darken($greenl,5);
+
+//fonts
+$header: "freight-sans-pro",sans-serif;
+$body: "proxima-nova",sans-serif;
+
+//font and padding size
+$lineh: 1.4em;
+$pad: 6.25%; // 40px/640px
+
+//MIXINS
+@mixin fade($property,$length,$style) {
+	-webkit-transition: $property $length $style;
+	-moz-transition: $property $length $style;
+	transition: $property $length $style;
+}
+
+@mixin box-sizing(){
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@mixin background-size(){
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+}
+
+@mixin text-shadow($style,$color){
+	text-shadow: $style $color;
+}
+
+@mixin delay($time) {
+	transition-delay: $time;
+	-moz-transition-delay: $time; /* Firefox 4 */
+	-webkit-transition-delay: $time; /* Safari and Chrome */
+	-o-transition-delay: $time; /* Opera */
+}
+
+@mixin box-shadow($x,$y,$blur,$spread,$color) {
+  -webkit-box-shadow: $x $y $blur $spread $color;
+  -moz-box-shadow: $x $y $blur $spread $color;
+  box-shadow: $x $y $blur $spread $color;
+}
+
+//MAIN
+* {
+	@include box-sizing();
+	-webkit-font-smoothing: antialiased;
+	margin: 0;
+	padding: 0;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+//tools
+.clearfix {
+    zoom:1;
+    &:before, &:after {
+        content: " ";
+        display: table;
+        height: 0;
+        overflow: hidden;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+.clear {
+	clear: both;
+}
+
+//THE PRETTY STUFF
+html, body {
+	height: 100%;
+}
+
+iframe {
+	vertical-align: top;
+}
+
+body {
+	background: $white;
+	padding-bottom: 105px; //fix for footer position
+
+	a {
+		@include fade(color,0.2s,ease-out);
+		color: darken($darkblue, 10);
+		text-decoration: none;
+
+		&:hover {
+			color: darken($darkblue,20);
+		}
+	}
+}
+
+footer, div.push {
+	height: 75px;
+}
+
+//structure
+div.wrapper { //sets up sticky footer
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -25px;
+}
+
+.container {
+	width: 660px;
+	margin: 0 auto;
+	padding: 0 10px;
+}
+
+.grid {
+	width: 100%;
+ 	@extend .clearfix;
+}
+
+[class*='col-'] {
+  float: left;
+  margin-right: $pad;
+  .grid &:last-of-type {
+    padding-right: 0;
+    margin-right: 0;
+  }
+}
+
+.col-1-2 {
+  width: 46.875%; // 300px/640px
+}
+
+.col-1-4 {
+	width: 23.4375%;
+}
+
+.col-3-4 {
+	width: 70.3125%;
+}
+
+.col-1-8 {
+	width: 1.71875%;
+}
+
+.col-7-8 {
+	width: 92.03125%;
+}
+
+aside, p, section {
+	margin-bottom: 15px;
+}
+
+section.header {
+	width: 100%;
+	background-color: darken($blue,3);
+	padding: 25px 0 35px 0;
+	border-bottom: 1px solid darken($blue,8);
+	margin-bottom: 0;
+	text-align: center;
+
+	ul[role='navigation'] {
+		list-style-type: none;
+		text-align: center;
+		padding-top: 20px;
+		margin: 0 auto;
+
+		li {
+			display: inline-block;
+			padding-right: 20px;
+			font-weight: 400;
+
+			&:last-of-type {
+				padding: 0;
+			}
+
+			a {
+				font-size: $base + 30;
+				color: white;
+
+				&:hover {
+					color: darken($blue, 30);
+
+				}
+			}
+		}
+	}
+}
+
+section.search {
+	width: 100%;
+	background-color: #DFDFDF;
+	padding: 15px 0;
+	margin-bottom: 0;
+	display: none;
+	border-top: 1px solid #EEE;
+
+	form > input[type="search"] {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		-o-appearance: none;
+		appearance: none;
+		border: none;
+		border-radius: 0px;
+		-webkit-appearance: none;
+		padding-left: 20px;
+		background: #DFDFDF url('http://wadehammes.com/images/search_d.png') left no-repeat;
+		width: 100%;
+		font-family: $body;
+		font-weight: 300;
+		font-size: 100%;
+
+		&::-webkit-search-cancel-button {
+			display: none;
+		}
+		&::-webkit-input-placeholder {
+			color: #888;
+		}
+		&:-moz-placeholder {
+			color: #888;
+		}
+	}
+}
+
+div.search-tab {
+	width: 100%;
+	text-align: right;
+
+	img {
+		padding: 5px 6px;
+		background-color: #DFDFDF;
+		margin-top: 0;
+
+		&:hover {
+			cursor: pointer;
+			background-color: $green;
+
+		}
+	}
+}
+
+section#intro {
+	p {
+		line-height: $lineh + 0.3;
+		color: #555B60;
+		font-weight: 300;
+		margin-bottom: 20px;
+		font-family: $body;
+	}
+}
+
+article {
+	margin-top: 25px;
+
+	div#crown {
+		background: url('http://wadehammes.com/images/logo-w-crown_white.png') top center no-repeat;
+		height: 100px;
+		width: 100px;
+		margin: 0 auto;
+	}
+
+	h1 {
+		font-size: $base + 80;
+		color: $black;
+		font-family: $header;
+		font-weight: 300;
+		line-height: $lineh;
+		margin-bottom: 10px;
+	}
+
+	h3 {
+		font-size: $base - 20;
+		color: #666;
+		font-family: $body;
+		font-weight: 300;
+		line-height: $lineh + 0.4;
+		text-transform: uppercase;
+		margin-bottom: 5px;
+	}
+
+	aside {
+		font-size: $base + 50;
+		color: $black;
+		font-family: $header;
+		font-weight: 300;
+		line-height: $lineh;
+		padding-top: 30px;
+		text-align: right;
+	}
+
+	p {
+		font-family: $body;
+		font-size: $base + 10;
+		line-height: $lineh + 0.2;
+		color: #555B60;
+		font-weight: 300;
+		margin-bottom: 20px;
+	}
+
+	div.sep {
+		width: 100%;
+		text-align: center;
+		margin-top: 10px;
+		color: darken($blue,5);
+	}
+
+	small, li {
+		font-size: $base - 15;
+		color: $black;
+		font-family: $header;
+		font-weight: 300;
+		line-height: $lineh;
+	}
+
+	img {
+		width: 100%;
+		max-width: 100%;
+		border: 1px solid #BBB;
+	}
+
+	a {
+		color: darken($blue,15);
+
+		&:hover {
+			color: darken($blue,10);
+		}
+	}
+
+	ul.items {
+	margin-top: 10px;
+	color: $black;
+	list-style-type: none;
+
+		li {
+
+			span.links {
+				@include delay(4s);
+				display: inline-block;
+				background-color: #DFDFDF;
+				padding: 15px;
+				margin-bottom: 10px;
+				-webkit-transition: all 0.2s ease-out, background-color 0.2s ease-out;
+				-moz-transition: all 0.2s ease-out, background-color 0.2s ease-out;
+				transition: all 0.2s ease-out, background-color 0.2s ease-out;
+				width: 100%;
+
+				&:hover {
+					padding-right: 25px;
+					background-color: lighten($green,5);
+				}
+			}
+
+			h2 {
+				font-size: 130%;
+				color: $black;
+				font-family: $header;
+				font-weight: 500;
+				line-height: 1.4em;
+				margin-right: 150px;
+			}
+
+			time {
+				display: block;
+				float: right;
+				font-size: $base - 10;
+				color: $black;
+				font-family: $body;
+				margin-top: 3px;
+			}
+		}
+	}
+}
+
+section#posts {
+	clear: both;
+	width: 100%;
+	margin-top: 35px;
+
+	div#pagination {
+		text-align: left;
+
+		p {
+			a {
+				font-size: $base - 10;
+				text-transform: uppercase;
+				color: darken($blue,20);
+
+				&:hover {
+					color: darken($blue,30);
+				}
+			}
+
+			span.older {
+				float: right;
+			}
+		}
+	}
+}
+
+section#main-content {
+	margin-bottom: 125px;
+}
+
+section.content {
+
+	h1 {
+		font-size: $base + 85;
+		color: darken($blue,10);
+		font-family: $header;
+		font-weight: 300;
+		line-height: $lineh - 0.1;
+		margin-bottom: 15px;
+	}
+
+	small {
+		font-size: $base - 20;
+		font-family: $header;
+		font-weight: 600;
+		line-height: $lineh;
+		text-transform: uppercase;
+		margin-right: 10px;
+	}
+
+	img {
+		margin-bottom: 20px;
+	}
+
+	a {
+		color: darken($blue,10);
+
+		&:hover {
+			color: darken($blue,20);
+		}
+	}
+
+	a.visit-site {
+			@include fade(background-color,0.2s,ease-out);
+			text-align: center;
+			background-color: $green;
+			padding: 8px 20px;
+			color: $white;
+			float: right;
+			clear:both;
+			margin-top: 15px;
+			font-family: $body;
+			font-weight: 600;
+			font-size: $base - 15;
+			text-transform: uppercase;
+			margin-bottom: 20px;
+
+			&:hover {
+				background-color: darken($blue,10);
+			}
+		}
+
+	time {
+		display: block;
+		margin-bottom: 5px;
+		font-size: $base - 15;
+		color: $black;
+		font-family: $header;
+		font-weight: 300;
+		line-height: $lineh;
+		text-align: left;
+	}
+}
+
+section.footnote {
+	font-size: $base - 15;
+	font-family: $header;
+	font-weight: 300;
+	line-height: $lineh + 0.4;
+	margin-top: 45px;
+	padding-top: 10px;
+	border-top: 1px solid #DDD;
+	clear: both;
+	color: $black;
+}
+
+div.social {
+	float: right;
+}
+
+section.about {
+	background-color: #292929;
+	color: #EEE;
+	font-size: $base - 15;
+	font-family: $header;
+	font-weight: 300;
+	line-height: $lineh + 0.4;
+	padding: 15px 0 20px 0;
+	margin-bottom: 0;
+
+	h4 {
+		font-size: $base - 5;
+		font-family: $header;
+		font-weight: 400;
+		text-transform: uppercase;
+		color: #CCC;
+	}
+}
+
+div#dribbble {
+	list-style-type: none;
+	
+	li {
+		float: left;
+		margin-right: 20px;
+		margin-top: 15px;
+
+		&:nth-of-type(3n) {
+			margin-right: 0;
+		}
+
+		img {
+			//@include fade(all,0.2s,ease-out);
+			filter: grayscale(100%);
+			// Browser Specific
+			-webkit-filter: grayscale(100%);
+			-moz-filter: grayscale(100%);
+			-o-filter: grayscale(100%);
+			-ms-filter: grayscale(100%);
+
+			&:hover {
+			filter: grayscale(0%);
+			// Browser Specific
+			-webkit-filter: grayscale(0%);
+			-moz-filter: grayscale(0%);
+			-o-filter: grayscale(0%);
+			-ms-filter: grayscale(0%);
+			}
+		}
+	}
+}
+
+section.tweet {
+	padding: 15px 0 15px 0;
+	font-size: $base - 15;
+	font-family: $header;
+	font-weight: 300;
+	line-height: $lineh + 0.4;
+	background-color: #e4e4e4;
+	margin: 0 auto;
+
+	p {
+		margin: 0;
+		font-size: $base + 15;
+		text-align: left;
+	}
+
+	img {
+		-webkit-filter: grayscale(100%);
+		-moz-filter: grayscale(100%);
+		-o-filter: grayscale(100%);
+		-ms-filter: grayscale(100%);
+	}
+
+	a {
+		color: darken($blue,15);
+
+		&:hover {
+			color: darken($blue,10);
+		}
+	}
+
+	iframe {
+		vertical-align: middle;
+		margin-left: -5px;
+	}
+}
+
+footer {
+	margin-bottom: 20px;
+	font-family: $body + 5;
+	background-color: #212121;
+	padding-top: 15px;
+	height: 95px;
+
+	small {
+	color: #CCC;
+	}
+
+	a {
+		color: darken($blue,10);
+
+		&:hover {
+			color: darken($blue,20);
+		}
+	}
+
+	ul[role='footer'] {
+		list-style-type: none;
+		text-align: right;
+
+		li {
+			display: inline-block;
+			padding-right: 10px;
+
+			&:last-of-type {
+				padding: 0;
+			}
+		}
+	}
+}
+
+p.caption {
+	font-size: $base - 20;
+	font-family: $body;
+	font-weight: 300;
+	line-height: $lineh;
+	text-transform: uppercase;
+	margin-top: -15px;
+}
+
+i {
+	font-weight: 5;
+	font-size: $base + 10;
+	font-style: normal;
+}
+
+//RESPONSIVE
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+screen and (max--moz-device-pixel-ratio: 2) {
+	section.header div#crown {
+		background-image: url('http://wadehammes.com/images/logo-w-crown_white@2x.png');
+		background-size: 100px 100px;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.container {
+		width: 92%;
+	}
+
+	body, p {
+		font-size: 95%;
+	}
+
+	article {
+		div#crown {
+		margin: 0 auto;
+		text-align: center;
+		margin-bottom: 10px;
+		}
+	}
+
+	section.header ul[role="navigation"] {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		text-align: center;
+
+		li a {
+			font-size: 125%;
+		}
+	}
+
+	form > input[type="search"] {
+		&::-webkit-input-placeholder {
+			font-size: 95%;
+		}
+		&:-moz-placeholder {
+			font-size: 95%;
+		}
+	}
+
+
+	section#intro p {
+		font-size: 105%;
+	}
+
+	footer .col-1-2 {
+		margin-bottom: 5px;
+		text-align: left;
+	}
+
+	footer ul[role="footer"] {
+		text-align: left;
+	}
+
+	/*article ul[role="footer"], footer {
+		text-align: center;
+	}*/
+
+	article ul.items li h2 {
+		font-size: 120%;
+		margin-right: 5px;
+	}
+
+	article ul.items a > span.links {
+		width: 99%;
+	}
+
+	ul.items {
+		list-style-type: none;
+	}
+
+	aside {
+		display: none;
+	}
+
+	p {
+		a.visit-site {
+		float: none;
+		text-align: center;
+		}
+	}
+
+	[class*='col-'] {
+	  float: none;
+	  width: 100%;
+	}
+
+	section.tweet {
+		.col-1-4 {
+			text-align: center;
+			margin-top: 10px;
+		}
+		iframe {
+			margin-top: 0;
+			margin: 0 auto 5px 0;
+		}
+	}
+
+	div#dribbble {
+	
+		li {
+			width: 29%;
+			float: left;
+			margin-right: 15px;
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	footer {
+		height: 105px;
+		padding-top: 5px;
+	}
+
+body, p, img, aside, div#crown {
+    @include fade(all,.2s,linear);
+	}
+}
