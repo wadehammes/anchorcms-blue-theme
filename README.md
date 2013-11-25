@@ -1,6 +1,6 @@
-anchorcms-blue-theme
+Anchor Blue Theme
 ====================
 
-A theme for Anchor CMS - repo in place to make it a publicly-available in time.
+A theme for Anchor CMS
 
-View the theme live at http://wadehammes.com
+This theme is no longer under development. It is as-is.
